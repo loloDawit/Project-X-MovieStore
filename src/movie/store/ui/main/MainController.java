@@ -8,9 +8,7 @@ package movie.store.ui.main;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.Desktop;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-//import com.oracle.webservices.internal.api.databinding.DatabindingModeFeature;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -21,10 +19,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,13 +35,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javax.swing.table.DefaultTableModel;
@@ -65,6 +58,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  */
 public class MainController implements Initializable {
      CustomerViewController viewController; 
+     AlertError err; 
      
     @FXML
     private TextField movieIDInput;
@@ -119,7 +113,6 @@ public class MainController implements Initializable {
     private Label customerSubdate;
     @FXML
     private Label cusEmail;
-    private TableColumn<History, String> actorCol;
     @FXML
     private TableColumn<History, String> cusfnameCol;
     @FXML
@@ -134,7 +127,6 @@ public class MainController implements Initializable {
     private TableColumn<Subscription, String> subTypeCol;
     @FXML
     private ComboBox<String> payCmBox;
-    private TableColumn<Payment, String> paysubIDCol;
     @FXML
     private TableColumn<Payment, String> payMethodCol;
     @FXML
@@ -158,6 +150,8 @@ public class MainController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     //@Override;
     @Override
@@ -166,12 +160,9 @@ public class MainController implements Initializable {
         initColSubscription();
         initColPayment();
         loadCBoxPaymentMethod();
-        
-       // JFXDepthManager.setDepth(movie_info, 1);
-       // JFXDepthManager.setDepth(customer_info, 1);
-//        loadComboBox();
         databaseHandler = DatabaseHandler.getIntance();
         viewController = new CustomerViewController();
+        err = new AlertError();
     }   
 
     @FXML
@@ -252,52 +243,6 @@ public class MainController implements Initializable {
         } catch (SQLException e) {
             
         }
-//        
-//        ObservableList <String> checkoutData = FXCollections.observableArrayList(); 
-//        isReady = false;
-//        String mID = movieID.getText(); 
-//        String query = "SELECT * FROM Checkout WHERE Movie_id = '" + mID +"'"; 
-//        
-//        ResultSet resultSet = databaseHandler.execQuery(query); 
-//        
-//        try {
-//            while(resultSet.next()){
-//                String mMovieID = mID;
-//                String mCustomerID = resultSet.getString("Customer_id"); 
-//                Date mCheckOutTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(resultSet.getString("checkout_time"));
-//                int mRenewCount = resultSet.getInt("renew_count");
-//                
-//                checkoutData.add("Checkout Date and Time : "+ mCheckOutTime.toGMTString()); 
-//                checkoutData.add("Renew Count: "+mRenewCount); 
-//                
-//                query = "SELECT * FROM Movie WHERE Movie_id = '" + mMovieID + "'"; 
-//                ResultSet rs1 = databaseHandler.execQuery(query);
-//                checkoutData.add("Movie Information:- "); 
-//                while(rs1.next()){
-//                    checkoutData.add("          Movie Title: " + rs1.getString("Movie_title")); 
-//                    checkoutData.add("          Movie ID: " + rs1.getString("Movie_id")); 
-//                    checkoutData.add("          Movie Actor: " + rs1.getString("Movie_actor")); 
-//                    checkoutData.add("          Movie Director: " + rs1.getString("Movie_director")); 
-//                }
-//                query = "SELECT * FROM CUSTOMER WHERE Customer_id = '" + mCustomerID + "'"; 
-//                rs1 = databaseHandler.execQuery(query);
-//                checkoutData.add("Customer Information:- "); 
-//                while(rs1.next()){
-//                    checkoutData.add("          Name : " + rs1.getString("Customer_id")); 
-//                    checkoutData.add("          phone : " + rs1.getString("Customer_phone")); 
-//                    checkoutData.add("          Email : " + rs1.getString("Customer_email")); 
-//                    //checkoutData.add("Movie Director: " + rs.getString("director")); 
-//                }
-//                isReady = true;
-//                       
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//       
-//        checkoutList.getItems().setAll(checkoutData);
-        
-        
     }
 
     @FXML
@@ -350,19 +295,12 @@ public class MainController implements Initializable {
         String movieIDstr = movieIDInput.getText(); 
         
         if(movieIDInput.getText().isEmpty() || customerIDInput.getText().isEmpty()){
+            err.display_checkoutEnterFields();  
+        }else{ 
             
-            Alert alert1 = new Alert(Alert.AlertType.ERROR);
-            alert1.setTitle("Movie Checkingout Error");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Both MoiveID and CustomerID Must Be Provided");
-            alert1.showAndWait();   
-        }else{    
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confrim CheckOut Operation");
-        alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to checkout this movie ' "+ movieName.getText() +" ' "+ "\n to "+ CustomerName.getText() +"?");
+        err.display_checkoutConfrim(movieName.getText(), CustomerName.getText());
         
-        Optional<ButtonType> response = alert.showAndWait(); 
+        Optional<ButtonType> response = err.alert.showAndWait(); 
         if(response.get() == ButtonType.OK){
             
             String str = "INSERT INTO Checkout(customer_id,movie_id) VALUES ("
@@ -374,26 +312,12 @@ public class MainController implements Initializable {
         
             // check if the movie is available before checking out
             if(databaseHandler.execAction(str) && databaseHandler.execAction(str2)){
-                 Alert alert1 = new Alert(Alert.AlertType.CONFIRMATION);
-                 alert1.setTitle("Success");
-                 alert1.setHeaderText(null);
-                 alert1.setContentText("Movie checkedout Complete");
-                 alert1.showAndWait();
-                
+                err.display_checkoutSuccess();
             }else{
-                 Alert alert1 = new Alert(Alert.AlertType.ERROR);
-                 alert1.setTitle("Movie Checkingout Error");
-                 alert1.setHeaderText(null);
-                 alert1.setContentText("The Movie is Unavailable");
-                 alert1.showAndWait();
+                err.display_checkoutFailed();
             }
-            // pressed cancel
         }else{
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                 alert1.setTitle("Cancelled");
-                 alert1.setHeaderText(null);
-                 alert1.setContentText("Movie checkingout cancelled");
-                 alert1.showAndWait();
+            err.display_checkoutcancel();
         }
        }
     }
@@ -448,79 +372,49 @@ public class MainController implements Initializable {
     @FXML
     private void loadSubmissonOperation(ActionEvent event) {
         if(!isReady){
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setTitle("Failed");
-            alert.setHeaderText(null);
-            alert.setContentText("Select a Movie to Submite");
-            alert.showAndWait(); 
+            err.display_returnEnterFields();
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confrim CheckOut Operation");
-        alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to return the movie ?");
+        err.display_returnConfrim();
         
-        Optional<ButtonType> response = alert.showAndWait(); 
+        Optional<ButtonType> response = err.alert.showAndWait(); 
         if(response.get() == ButtonType.OK){
         String id = movieID.getText(); 
         String act1 = "DELETE FROM Checkout WHERE Movie_id = '" + id + "'"; 
         String act2 = "UPDATE Movie SET Movie_copy = (Movie_copy+1) WHERE Movie_id = '" + id + "'"; 
         
         if(databaseHandler.execAction(act1) && databaseHandler.execAction(act2)){
-            Alert alert1 = new Alert(Alert.AlertType.INFORMATION); 
-            alert1.setTitle("Sucess");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Movie has been Submitted");
-            alert1.showAndWait(); 
+            err.display_returnSuccess();
         }else{
-            Alert alert1 = new Alert(Alert.AlertType.ERROR); 
-            alert1.setTitle("Failed");
-            alert1.setHeaderText(null);
-            alert1.setContentText("Submittion has Failed");
-            alert1.showAndWait(); 
+            err.display_returnFailed();
         }
-    }else{
-             Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                 alert1.setTitle("Cancelled");
-                 alert1.setHeaderText(null);
-                 alert1.setContentText("Submittion cancelled");
-                 alert1.showAndWait();
-            
+        }else{
+            err.display_returncancel();  
         }
     }
 
     @FXML
     private void loadRenewOperation(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confrim Renew Operation");
-        alert.setHeaderText(null);
-        alert.setContentText("Are you sure you want to renew ?");
+        Boolean flag = movieID.getText().isEmpty();
+        if(flag){
+            err.display_renewEnterFields();
+            return;
+        }
+        err.display_renewConfrim();
         
-        Optional<ButtonType> response = alert.showAndWait(); 
+        Optional<ButtonType> response = err.alert.showAndWait(); 
         if(response.get() == ButtonType.OK){
             String act1 = "UPDATE Checkout SET checkout_time = CURRENT_TIMESTAMP, "
                     + "renew_count = (renew_count+1) WHERE Movie_id = '"+ movieID.getText() + "'";
             System.out.println(act1);
             if(databaseHandler.execAction(act1)){
-                Alert alert1 = new Alert(Alert.AlertType.INFORMATION); 
-                alert1.setTitle("Sucess");
-                alert1.setHeaderText(null);
-                alert1.setContentText("Rental has been Renewed");
-                alert1.showAndWait();
+                err.display_renewSuccess();
                 
             }else{
-                Alert alert1 = new Alert(Alert.AlertType.ERROR); 
-                alert1.setTitle("Failed");
-                alert1.setHeaderText(null);
-                alert1.setContentText("Renew has Failed");
-                alert1.showAndWait(); 
+                err.display_renewFailed();
             }
         }else{
-                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-                 alert1.setTitle("Cancelled");
-                 alert1.setHeaderText(null);
-                 alert1.setContentText("Renew cancelled");
-                 alert1.showAndWait();
+            err.display_renewCancel();
         }
     }
 
@@ -670,10 +564,7 @@ public class MainController implements Initializable {
         Boolean flag = mfName.isEmpty() || mminit.isEmpty() || mlname.isEmpty() ||
                 mID.isEmpty() || mPhone.isEmpty() || mEmail.isEmpty(); 
         if(flag){
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Please Enter All Fields.");
-            alert.showAndWait();
+            err.displayEnterAllFields();
             return;
         }
         try {
@@ -697,17 +588,9 @@ public class MainController implements Initializable {
          
         System.out.println(qu);
         if(databaseHandler.execAction(qu)){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION); 
-            alert.setHeaderText(null);
-            alert.setContentText("Saved");
-            alert.showAndWait();
-            //return;
+            err.displaySavedInfo();
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Error Occured");
-            alert.showAndWait();
-           
+            err.displayError();
         }
     }
 
@@ -768,10 +651,7 @@ public class MainController implements Initializable {
                 pMethod.isEmpty();
         
         if(flag){
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Please Enter All Fields.");
-            alert.showAndWait();
+            err.displayEnterAllFields();
             return;
         }try {
             String query = "INSERT INTO Payment VALUES ("
@@ -783,17 +663,9 @@ public class MainController implements Initializable {
                     +")";
             System.out.println(query);
             if(databaseHandler.execAction(query)){
-                 Alert alert = new Alert(Alert.AlertType.INFORMATION); 
-                alert.setHeaderText(null);
-                alert.setContentText("Saved");
-                alert.showAndWait();
-                
+                err.displaySavedInfo();
             }else{
-                 Alert alert = new Alert(Alert.AlertType.ERROR); 
-                alert.setHeaderText(null);
-                alert.setContentText("Error Occured");
-                alert.showAndWait();
-                
+                err.displayError();
             }
             
         } catch (Exception e) {
@@ -808,7 +680,9 @@ public class MainController implements Initializable {
         payCusID.clear();
         
     }
-
+    /*
+     * Initialize the Payment table's content to dispaly the query
+    */
     private void initColPayment() {
         
        paySubTypeCol.setCellValueFactory(new PropertyValueFactory<>("paySubtype"));
@@ -828,16 +702,11 @@ public class MainController implements Initializable {
         ResultSet rs = databaseHandler.execQuery(qu); 
         Boolean flag = pCusID.isEmpty();
         if(flag){
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Please Enter Customer ID");
-            alert.showAndWait();
-            return;
-            
+            err.displayEnterAllFields();
         }
-        
-        try {
-            while(rs.next()){
+        else{
+            try {
+                while(rs.next()){
                 
                 String pPayID = rs.getString("Payment_id");
                 String pPMethod = rs.getString("Payment_method"); 
@@ -853,168 +722,18 @@ public class MainController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+        }
     }
 
     @FXML
     private void loadExportToExcel(ActionEvent event) {
-        try {
-            //Populate DefaultTableModel data
-        DefaultTableModel dtm = new DefaultTableModel();
-        Vector<String> cols = new Vector<String>();
-        dtm.addColumn("Col 1");
-        dtm.addColumn("Col 2");
-        dtm.addColumn("Col 3");
-     
-        Vector<String> dtmrow = null;
-        for (int i=1;i<=10;i++) {
-        dtmrow = new Vector<String>();
-        for (int j=1;j<=3;j++) {
-            dtmrow.add("Cell " + j + "." + i );
-        }
-        dtm.addRow(dtmrow);
-        }
-        Workbook wb = new HSSFWorkbook();
-        CreationHelper creationHelper = wb.getCreationHelper();
-        Sheet sheet = wb.createSheet("Customer DB");
-        Row row = null;
-        Cell cell = null;
-        for(int i=0; i<dtm.getRowCount();i++){
-            row = sheet.createRow(i);
-            for(int j = 0;j<dtm.getColumnCount();j++){
-                cell = row.createCell(j);
-                cell.setCellValue((String)dtm.getValueAt(j, j));
-            }
-        }
-            try (FileOutputStream out = new FileOutputStream(" /Users/dawitabera/Desktop/Desktop - Dawit’s MacBook Pro/Movie Store/src/movie/store/resources/customerDB.xls")) {
-                wb.write(out);
-            }
-        } catch (IOException e) {
-        }
     }
+    
 
     @FXML
     private void closeWindow(ActionEvent event) {
         closeStage();
         viewController.loadLoginUI();
         
-    }
-
-    public static class History{
-         private final SimpleStringProperty movieID;
-         private final SimpleStringProperty customerID; 
-         private final SimpleStringProperty count;
-         private final SimpleStringProperty time; 
-         private final SimpleStringProperty movieName;
-         private final SimpleStringProperty cusName;
-         
-         public History(String mID,String cusID, String tDate,String cnt, String mname,String cName){
-             
-             this.movieID = new SimpleStringProperty(mID);
-             this.customerID = new SimpleStringProperty(cusID);
-             this.count = new SimpleStringProperty(cnt);
-             this.time = new SimpleStringProperty(tDate); 
-             this.movieName = new SimpleStringProperty(mname); 
-             this.cusName = new SimpleStringProperty(cName); 
-             
-         }
-
-        public String getMovieID() {
-            return movieID.get();
-        }
-
-        public String getCustomerID() {
-            return customerID.get();
-        }
-
-        public String getCount() {
-            return count.get();
-        }
-
-        public String getTime() {
-            return time.get();
-        }
-
-        public String getMovieName() {
-            return movieName.get();
-        }
-        public String getCusName() {
-            return cusName.get();
-        }
-        
-        
-    }
-    public static class Subscription{
-         private final SimpleStringProperty subID;
-         private final SimpleStringProperty cusID; 
-         private final SimpleStringProperty cusName;
-         private final SimpleStringProperty subType; 
-         
-         public Subscription(String sID,String cName, String cID,String stype){
-             this.cusID = new SimpleStringProperty(cID);
-             this.cusName = new SimpleStringProperty(cName);
-             this.subID = new SimpleStringProperty(sID);
-             this.subType = new SimpleStringProperty(stype);
-         }
-
-        public String getSubID() {
-            return subID.get();
-        }
-
-        public String getCusID() {
-            return cusID.get();
-        }
-
-        public String getCusName() {
-            return cusName.get();
-        }
-
-        public String getSubType() {
-            return subType.get();
-        }
-           
-    }
-    
-     public static class Payment{
-         private final SimpleStringProperty payDate;
-         private final SimpleStringProperty paySubtype;
-         private final SimpleStringProperty cusID; 
-         private final SimpleStringProperty payID;
-         private final SimpleStringProperty payMethod;
-         
-         public Payment(String pID,String pMethod, String pDate,String pCusID,String pSubType){
-             this.cusID = new SimpleStringProperty(pCusID);
-             this.payMethod = new SimpleStringProperty(pMethod);
-             this.payDate = new SimpleStringProperty(pDate);
-             this.paySubtype = new SimpleStringProperty(pSubType);
-             this.payID = new SimpleStringProperty(pID);
-             
-         }
-
-        public String getPayDate() {
-            return payDate.get();
-        }
-
-        public String getPaySubtype() {
-            return paySubtype.get();
-        }
-
-        public String getCusID() {
-            return cusID.get();
-        }
-
-        public String getPayID() {
-            return payID.get();
-        }
-
-        public String getPayMethod() {
-            return payMethod.get();
-        }
-         
-         
-     }
-   
-
-   
+    }  
 }
