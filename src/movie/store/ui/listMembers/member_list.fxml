@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movie.store.ui.listMembers.MemberListController">
+    <stylesheets>
+        <URL value="@member_list.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableView" layoutX="10.0" layoutY="69.0" prefHeight="400.0" prefWidth="600.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <columns>
+            <TableColumn fx:id="fnamecol" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="minit" prefWidth="39.0" text="M" />
+            <TableColumn fx:id="lastcol" prefWidth="106.0" text="Last" />
+            <TableColumn fx:id="idcol" prefWidth="73.0" text="ID" />
+            <TableColumn fx:id="phoneCol" prefWidth="109.0" text="Phone" />
+            <TableColumn fx:id="emailCol" prefWidth="166.0" text="Email" />
+            <TableColumn fx:id="addresscol" prefWidth="116.0" text="Address" />
+            <TableColumn fx:id="citycol" prefWidth="75.0" text="City" />
+            <TableColumn fx:id="statecol" prefWidth="43.0" text="State" />
+            <TableColumn fx:id="zipcol" prefWidth="82.0" text="Zip" />
+            <TableColumn fx:id="dobcol" prefWidth="100.0" text="DOB" />
+            <TableColumn fx:id="subdatecol" prefWidth="158.0" text="SubDate" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="105.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="870.0" AnchorPane.topAnchor="15.0">
+         <image>
+            <Image url="@../main/projectX%20icons/Search-64.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="searchInput" labelFloat="true" layoutX="12.0" layoutY="2.0" onAction="#searchOperation" prefHeight="25.0" prefWidth="117.0" promptText="search" AnchorPane.bottomAnchor="472.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="871.0" AnchorPane.topAnchor="15.0" />
+   </children>
+</AnchorPane>

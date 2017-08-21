@@ -1,0 +1,22 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+.setup-Button{
+    -fx-background-color: #424242;
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill:white;
+}
+.setup_JFXTextField{
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    
+}
+.setup-Button:hover{
+    -fx-background-color: #0288D1;
+}
+

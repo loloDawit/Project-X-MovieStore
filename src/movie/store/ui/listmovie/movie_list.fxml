@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="483.0" prefWidth="620.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movie.store.ui.listmovie.MovieListController">
+    <stylesheets>
+        <URL value="@movie_list.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn fx:id="titleCol" prefWidth="75.0" text="Title" />
+          <TableColumn fx:id="idCol" prefWidth="75.0" text="Movie ID" />
+            <TableColumn fx:id="actorCol" prefWidth="75.0" text="Actor" />
+            <TableColumn fx:id="directorCol" prefWidth="75.0" text="Director" />
+            <TableColumn fx:id="genrecol" prefWidth="75.0" text="Genre" />
+            <TableColumn fx:id="yearcol" prefWidth="75.0" text="Year" />
+            <TableColumn fx:id="typecol" prefWidth="75.0" text="Type" />
+            <TableColumn fx:id="Copycol" prefWidth="75.0" text="NoCopy" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <JFXTextField fx:id="searchInput" labelFloat="true" layoutX="26.0" layoutY="25.0" onAction="#searchOperation" prefHeight="25.0" prefWidth="124.0" promptText="search" AnchorPane.bottomAnchor="443.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="480.0" AnchorPane.topAnchor="15.0" />
+      <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="113.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="443.0" AnchorPane.leftAnchor="113.0" AnchorPane.rightAnchor="482.0" AnchorPane.topAnchor="15.0">
+         <image>
+            <Image url="@../main/projectX%20icons/Search-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movie.store.ui.main.SplashFXMLController">
+   <children>
+      <Pane prefHeight="358.0" prefWidth="601.0">
+         <children>
+            <ImageView fitHeight="338.0" fitWidth="601.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@entertainment-wallpapers.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="#392e2e" layoutX="157.0" layoutY="55.0" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P r o j e c t  X" textAlignment="CENTER">
+               <font>
+                  <Font name="Garamond Bold" size="48.0" />
+               </font>
+            </Text>
+            <Text fill="#979797" layoutX="211.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="W E L C O M E " textAlignment="CENTER">
+               <font>
+                  <Font name="Garamond Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#6f4c4c" layoutX="241.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loading..." textAlignment="CENTER">
+               <font>
+                  <Font name="Garamond Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
