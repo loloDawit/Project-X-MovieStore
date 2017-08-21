@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="428.0" prefWidth="312.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movie.store.ui.addMember.MemberAddController">
+    <stylesheets>
+        <URL value="@member_add.css" />
+    </stylesheets>
+   <children>
+      <VBox prefHeight="251.0" prefWidth="495.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="25.0" prefWidth="312.0">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+               <children>
+                  <JFXTextField fx:id="fname" labelFloat="true" prefHeight="25.0" prefWidth="108.0" promptText="First Name">
+                     <HBox.margin>
+                        <Insets bottom="5.0" right="10.0" />
+                     </HBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="minit" labelFloat="true" prefHeight="25.0" prefWidth="46.0" promptText="M">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </JFXTextField>
+                  <JFXTextField fx:id="lastname" labelFloat="true" promptText="Last Name">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </JFXTextField>
+               </children>
+            </HBox>
+            <JFXTextField fx:id="id" labelFloat="true" layoutX="20.0" layoutY="30.0" promptText="Member ID">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="phone" labelFloat="true" layoutX="20.0" layoutY="30.0" promptText="Phone">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="email" labelFloat="true" layoutX="10.0" layoutY="55.0" promptText="Email">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="address" labelFloat="true" promptText="Address">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <HBox prefHeight="38.0" prefWidth="526.0">
+               <children>
+                  <TextField fx:id="city" prefHeight="27.0" prefWidth="132.0" promptText="City">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="state" prefHeight="27.0" prefWidth="53.0" promptText="State">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <TextField fx:id="zip" prefHeight="27.0" prefWidth="68.0" promptText="Zip">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <DatePicker fx:id="dateofbirth" prefHeight="27.0" prefWidth="160.0" promptText="Date of birth">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </DatePicker>
+            <DatePicker fx:id="subdate" prefHeight="27.0" prefWidth="160.0" promptText="subscription date">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </DatePicker>
+            <ComboBox fx:id="subtype" prefHeight="27.0" prefWidth="160.0" promptText="Subscription Type">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <HBox prefHeight="30.0" prefWidth="312.0">
+               <children>
+                  <JFXButton onAction="#addCustomer" prefHeight="54.0" prefWidth="171.0" stylesheets="@member_add.css" text="Save">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="10.0" onAction="#deleteCustomer" prefHeight="54.0" prefWidth="171.0" stylesheets="@member_add.css" text="Delete">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#cancel" prefHeight="54.0" prefWidth="171.0" stylesheets="@member_add.css" text="Cancel">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

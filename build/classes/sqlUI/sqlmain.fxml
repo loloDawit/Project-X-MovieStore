@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sqlUI.SqlmainController">
+   <children>
+      <VBox layoutX="80.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label opacity="0.6" text="Here you will find all the complex queries we used for our project" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Cochin" size="36.0" />
+               </font>
+            </Label>
+            <Label text="List all the name of the movies that a customer subscribed with their sub plan and they price they are paying? " wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Cochin" size="14.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="600.0">
+               <children>
+                  <JFXButton onAction="#loadFirstQuery" stylesheets="@../movie/store/resources/shared.css" text="Perform Query">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#showFirstQuery" stylesheets="@../movie/store/resources/shared.css" text="Show Query">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <Label text="Show customers who have subscription for HD, Non-HD or TV-Shows services who are from ‘Seattle’" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Cochin" size="14.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="600.0">
+               <children>
+                  <JFXButton onAction="#loadSecondQuery" stylesheets="@../movie/store/resources/shared.css" text="Perform Query">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#showSecondQuery" stylesheets="@../movie/store/resources/shared.css" text="Show Query">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <Label text="List all customer with their subscription plan and subscription date" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Cochin" size="14.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="600.0">
+               <children>
+                  <JFXButton onAction="#loadThirdQuery" stylesheets="@../movie/store/resources/shared.css" text="Perform Query">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#showThirdQuery" stylesheets="@../movie/store/resources/shared.css" text="Show Query">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <Label text="Count people who have HD" wrapText="true">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="600.0">
+               <children>
+                  <JFXButton onAction="#loadFourthQuery" stylesheets="@../movie/store/resources/shared.css" text="Perform Query">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#showFourthQuery" stylesheets="@../movie/store/resources/shared.css" text="Show Query">
+                     <font>
+                        <Font name="Tahoma" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="676.0" prefWidth="932.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="movie.store.resources.populateCSV.AddCSVController">
+   <children>
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="600.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <columns>
+            <TableColumn fx:id="idCol" prefWidth="71.0" text="Movie ID" />
+            <TableColumn fx:id="titleCol" minWidth="0.0" prefWidth="230.0" text="Title" />
+            <TableColumn fx:id="genreCol" prefWidth="77.0" text="Genre" />
+            <TableColumn fx:id="yearCol" prefWidth="44.0" text="Year" />
+            <TableColumn fx:id="directorCol" prefWidth="172.0" text="Director" />
+            <TableColumn fx:id="actorCol" prefWidth="247.0" text="Actor" />
+            <TableColumn fx:id="Copies" prefWidth="75.0" text="#Copies" />
+         </columns>
+      </TableView>
+      <JFXTextField fx:id="searchInput" labelFloat="true" layoutX="26.0" layoutY="25.0" onAction="#searchOperation" prefHeight="27.0" prefWidth="150.0" promptText="search" AnchorPane.bottomAnchor="634.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="766.0" AnchorPane.topAnchor="15.0" />
+      <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="151.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="443.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="454.0" AnchorPane.topAnchor="15.0">
+         <image>
+            <Image url="@../../ui/main/projectX%20icons/Search-64.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="281.0" layoutY="14.0" onAction="#loadCSV" stylesheets="@../shared.css" text="Load" />
+   </children>
+   <stylesheets>
+      <URL value="@../../ui/listmovie/movie_list.css" />
+   </stylesheets>
+</AnchorPane>

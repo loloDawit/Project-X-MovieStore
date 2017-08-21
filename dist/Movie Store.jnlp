@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Movie Store.jnlp">
+  <information>
+    <title>Movie Store</title>
+    <vendor>dawitabera</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="lib/commons-codec-1.10.jar" size="284184" download="eager" />
+    <jar href="lib/commons-codec-1.4.jar" size="58160" download="eager" />
+    <jar href="lib/commons-collections4-4.1.jar" size="751238" download="eager" />
+    <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib/derby.jar" size="3230946" download="eager" />
+    <jar href="lib/derbyclient.jar" size="587986" download="eager" />
+    <jar href="lib/gson-2.3.1.jar" size="210856" download="eager" />
+    <jar href="lib/jfoenix.jar" size="2383838" download="eager" />
+    <jar href="lib/junit-4.12.jar" size="314932" download="eager" />
+    <jar href="lib/log4j-1.2.17.jar" size="489884" download="eager" />
+    <jar href="lib/poi-3.17-beta1.jar" size="2691216" download="eager" />
+    <jar href="lib/sqlite-jdbc-3.19.3.jar" size="6213670" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Movie Store" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="movie.store.ui.main.Main"  name="Movie Store" />
+  <update check="always"/>
+</jnlp>

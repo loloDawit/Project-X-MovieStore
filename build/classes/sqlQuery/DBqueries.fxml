@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sqlQuery.DBqueriesController">
+   <children>
+      <TableView fx:id="tableview" layoutX="93.0" layoutY="32.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="cusid" prefWidth="89.0" text="Customer ID" />
+          <TableColumn fx:id="movieid" prefWidth="61.0" text="Movie ID" />
+            <TableColumn fx:id="movietype" prefWidth="89.0" text="Movie Type" />
+            <TableColumn fx:id="subid" prefWidth="101.0" text="Subscription ID" />
+            <TableColumn fx:id="subtype" prefWidth="120.0" text="Subscription Type" />
+            <TableColumn fx:id="price" prefWidth="101.0" text="Price" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

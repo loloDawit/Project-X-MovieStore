@@ -1,0 +1,45 @@
+<html><head>
+  <SCRIPT src="./web-files/dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'Movie Store.jnlp',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPGpubHAgc3BlYz0iMS4wIiB4bWxuczpqZng9Imh0dHA6Ly9qYXZhZnguY29tIiBocmVmPSJNb3ZpZSBTdG9yZS5qbmxwIj4KICA8aW5mb3JtYXRpb24+CiAgICA8dGl0bGU+TW92aWUgU3RvcmU8L3RpdGxlPgogICAgPHZlbmRvcj5kYXdpdGFiZXJhPC92ZW5kb3I+CiAgICA8ZGVzY3JpcHRpb24+bnVsbDwvZGVzY3JpcHRpb24+CiAgICA8b2ZmbGluZS1hbGxvd2VkLz4KICA8L2luZm9ybWF0aW9uPgogIDxyZXNvdXJjZXM+CiAgICA8ajJzZSB2ZXJzaW9uPSIxLjYrIiBocmVmPSJodHRwOi8vamF2YS5zdW4uY29tL3Byb2R1Y3RzL2F1dG9kbC9qMnNlIi8+CiAgICA8amFyIGhyZWY9ImxpYi9jb21tb25zLWNvZGVjLTEuMTAuamFyIiBzaXplPSIyODQxODQiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbW1vbnMtY29kZWMtMS40LmphciIgc2l6ZT0iNTgxNjAiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbW1vbnMtY29sbGVjdGlvbnM0LTQuMS5qYXIiIHNpemU9Ijc1MTIzOCIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvY29tbW9ucy1sb2dnaW5nLTEuMi5qYXIiIHNpemU9IjYxODI5IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9kZXJieS5qYXIiIHNpemU9IjMyMzA5NDYiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2RlcmJ5Y2xpZW50LmphciIgc2l6ZT0iNTg3OTg2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9nc29uLTIuMy4xLmphciIgc2l6ZT0iMjEwODU2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9qZm9lbml4LmphciIgc2l6ZT0iMjM4MzgzOCIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvanVuaXQtNC4xMi5qYXIiIHNpemU9IjMxNDkzMiIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvbG9nNGotMS4yLjE3LmphciIgc2l6ZT0iNDg5ODg0IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9wb2ktMy4xNy1iZXRhMS5qYXIiIHNpemU9IjI2OTEyMTYiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL3NxbGl0ZS1qZGJjLTMuMTkuMy5qYXIiIHNpemU9IjYyMTM2NzAiIGRvd25sb2FkPSJlYWdlciIgLz4KICA8L3Jlc291cmNlcz4KICA8YXBwbGV0LWRlc2MgIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBtYWluLWNsYXNzPSJjb20uamF2YWZ4Lm1haW4uTm9KYXZhRlhGYWxsYmFjayIgIG5hbWU9Ik1vdmllIFN0b3JlIiA+CiAgICA8cGFyYW0gbmFtZT0icmVxdWlyZWRGWFZlcnNpb24iIHZhbHVlPSI4LjArIi8+CiAgPC9hcHBsZXQtZGVzYz4KICA8amZ4OmphdmFmeC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0ibW92aWUuc3RvcmUudWkubWFpbi5NYWluIiAgbmFtZT0iTW92aWUgU3RvcmUiIC8+CiAgPHVwZGF0ZSBjaGVjaz0iYWx3YXlzIi8+Cjwvam5scD4K'
+            },
+            {
+                javafx : '8.0+'
+            },
+            {}
+        );
+        return false;
+    }
+</script>
+
+<script>
+    function javafxEmbedmovie.store.ui.main() {
+        dtjava.embed(
+            {
+                id : 'movie.store.ui.main',
+                url : 'Movie Store.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : '800',
+                height : '600',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPGpubHAgc3BlYz0iMS4wIiB4bWxuczpqZng9Imh0dHA6Ly9qYXZhZnguY29tIiBocmVmPSJNb3ZpZSBTdG9yZS5qbmxwIj4KICA8aW5mb3JtYXRpb24+CiAgICA8dGl0bGU+TW92aWUgU3RvcmU8L3RpdGxlPgogICAgPHZlbmRvcj5kYXdpdGFiZXJhPC92ZW5kb3I+CiAgICA8ZGVzY3JpcHRpb24+bnVsbDwvZGVzY3JpcHRpb24+CiAgICA8b2ZmbGluZS1hbGxvd2VkLz4KICA8L2luZm9ybWF0aW9uPgogIDxyZXNvdXJjZXM+CiAgICA8ajJzZSB2ZXJzaW9uPSIxLjYrIiBocmVmPSJodHRwOi8vamF2YS5zdW4uY29tL3Byb2R1Y3RzL2F1dG9kbC9qMnNlIi8+CiAgICA8amFyIGhyZWY9ImxpYi9jb21tb25zLWNvZGVjLTEuMTAuamFyIiBzaXplPSIyODQxODQiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbW1vbnMtY29kZWMtMS40LmphciIgc2l6ZT0iNTgxNjAiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2NvbW1vbnMtY29sbGVjdGlvbnM0LTQuMS5qYXIiIHNpemU9Ijc1MTIzOCIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvY29tbW9ucy1sb2dnaW5nLTEuMi5qYXIiIHNpemU9IjYxODI5IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9kZXJieS5qYXIiIHNpemU9IjMyMzA5NDYiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL2RlcmJ5Y2xpZW50LmphciIgc2l6ZT0iNTg3OTg2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9nc29uLTIuMy4xLmphciIgc2l6ZT0iMjEwODU2IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9qZm9lbml4LmphciIgc2l6ZT0iMjM4MzgzOCIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvanVuaXQtNC4xMi5qYXIiIHNpemU9IjMxNDkzMiIgZG93bmxvYWQ9ImVhZ2VyIiAvPgogICAgPGphciBocmVmPSJsaWIvbG9nNGotMS4yLjE3LmphciIgc2l6ZT0iNDg5ODg0IiBkb3dubG9hZD0iZWFnZXIiIC8+CiAgICA8amFyIGhyZWY9ImxpYi9wb2ktMy4xNy1iZXRhMS5qYXIiIHNpemU9IjI2OTEyMTYiIGRvd25sb2FkPSJlYWdlciIgLz4KICAgIDxqYXIgaHJlZj0ibGliL3NxbGl0ZS1qZGJjLTMuMTkuMy5qYXIiIHNpemU9IjYyMTM2NzAiIGRvd25sb2FkPSJlYWdlciIgLz4KICA8L3Jlc291cmNlcz4KICA8YXBwbGV0LWRlc2MgIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBtYWluLWNsYXNzPSJjb20uamF2YWZ4Lm1haW4uTm9KYXZhRlhGYWxsYmFjayIgIG5hbWU9Ik1vdmllIFN0b3JlIiA+CiAgICA8cGFyYW0gbmFtZT0icmVxdWlyZWRGWFZlcnNpb24iIHZhbHVlPSI4LjArIi8+CiAgPC9hcHBsZXQtZGVzYz4KICA8amZ4OmphdmFmeC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0ibW92aWUuc3RvcmUudWkubWFpbi5NYWluIiAgbmFtZT0iTW92aWUgU3RvcmUiIC8+CiAgPHVwZGF0ZSBjaGVjaz0iYWx3YXlzIi8+Cjwvam5scD4K'
+            },
+            {
+                javafx : '8.0+'
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbedmovie.store.ui.main);
+</script>
+
+</head><body>
+<h2>Test page for <b>Movie Store</b></h2>
+  <b>Webstart:</b> <a href='Movie Store.jnlp' onclick="return launchApplication('Movie Store.jnlp');">click to launch this app as webstart</a><br><hr><br>
+
+  <!-- Applet will be inserted here -->
+  <div id='javafx-app-placeholder'></div>
+</body></html>
