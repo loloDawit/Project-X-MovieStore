@@ -1,6 +1,5 @@
 # ProjectX
-ProjectX
-The goal of this project is to create a databases and GUI for a movie store.  
+The goal of this project is to create a databases for a movie store using SQLite and GUI for the movie store using javaFX application.   
 
 # Online   Movie   Store   | Database CSS   475:   | Database   Systems   Final   Project   |   Summer 2017      
 #                                   University   Of   Washington 
