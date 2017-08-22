@@ -1,11 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Class to add new movies to the database. 
  */
 package movie.store;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -19,13 +16,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import movie.store.database.DatabaseHandler;
+import movie.store.ui.main.AlertError;
 
 /**
  * FXML Controller class
@@ -33,6 +28,7 @@ import movie.store.database.DatabaseHandler;
  * @author dawitabera
  */
 public class FXMLDocumentController implements Initializable {
+    AlertError err; 
 
     @FXML
     private JFXTextField title;
@@ -42,16 +38,10 @@ public class FXMLDocumentController implements Initializable {
     private JFXTextField actor;
     @FXML
     private JFXTextField director;
-    @FXML
-    private JFXButton saveButton;
-    @FXML
-    private JFXButton cancelButton;
 
     DatabaseHandler databaseHandler;
     @FXML
     private AnchorPane rootPane;
-    @FXML
-    private JFXButton deleteButton;
     @FXML
     private JFXTextField genre;
     @FXML
@@ -84,12 +74,12 @@ public class FXMLDocumentController implements Initializable {
         String mcopy = copies.getText(); 
         String mtype = type.getValue(); 
         
-        Boolean flag = mID.isEmpty() || mActor.isEmpty() || mDirector.isEmpty() || mTitle.isEmpty();
+        // check all the fields are provided 
+        Boolean flag = mID.isEmpty() || mActor.isEmpty() || mDirector.isEmpty() 
+                || mTitle.isEmpty();
+        
         if(flag){
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Please Enter All Fields.");
-            alert.showAndWait();
+            err.displayEnterAllFields();
             return;
         }
 
@@ -107,24 +97,15 @@ public class FXMLDocumentController implements Initializable {
        
         System.out.println(qu);
         if(databaseHandler.execAction(qu)){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION); 
-            alert.setHeaderText(null);
-            alert.setContentText("Success");
-            alert.showAndWait();
-        }else{ // error
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Faild");
-            alert.showAndWait(); 
+            err.displaySavedInfo();
+        }else{
+            err.displayError();
         } 
             
     }
 
     @FXML
     private void cancel(ActionEvent event) {
-        // create stage object
-        // type cast since we are accessing the window
-        
         Stage stage = (Stage) rootPane.getScene().getWindow(); 
         stage.close();
     }
@@ -142,9 +123,18 @@ public class FXMLDocumentController implements Initializable {
             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    // Comobox to store the subscription keyes 
+    private void loadComboBox() {
+        ObservableList<String> options = FXCollections.observableArrayList(
+            "3455", 
+            "3456",
+            "3457");
+       type.setItems(options);
+    }
 
-    private void deleteMovie(ActionEvent event) {
-        //String mName = name.getText(); 
+    @FXML
+    private void DeletMovie(ActionEvent event) {
+            //String mName = name.getText(); 
         String mID = id.getText();
 
         
@@ -159,30 +149,10 @@ public class FXMLDocumentController implements Initializable {
         String st = "DELETE FROM MOVIE WHERE id = '"+ mID +"'" ;
         System.out.println(st);
         if(databaseHandler.execUpdate(st)){
-            Alert alert = new Alert(Alert.AlertType.INFORMATION); 
-            alert.setHeaderText(null);
-            alert.setContentText("Deleted");
-            alert.showAndWait();
+            err.displayDeleted();
             //return;
         }else{
-            Alert alert = new Alert(Alert.AlertType.ERROR); 
-            alert.setHeaderText(null);
-            alert.setContentText("Error Occured");
-            alert.showAndWait();
-           
+            err.displayError();
         }
-    }
-    
-        private void loadComboBox() {
-        ObservableList<String> options = FXCollections.observableArrayList(
-            "3455", 
-            "3456",
-            "3457");
-        //final ComboBox cb = new ComboBox(options); 
-       type.setItems(options);
-    }
-
-    @FXML
-    private void DeletMovie(ActionEvent event) {
     }
 }
