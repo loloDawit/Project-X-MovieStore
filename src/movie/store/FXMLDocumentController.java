@@ -125,16 +125,21 @@ public class FXMLDocumentController implements Initializable {
     }
     // Comobox to store the subscription keyes 
     private void loadComboBox() {
-        ObservableList<String> options = FXCollections.observableArrayList(
-            "3455", 
-            "3456",
-            "3457");
+        ObservableList<String> options = FXCollections.observableArrayList();
+        String query = "SELECT type FROM Sub_Type"; 
+        ResultSet rs  = databaseHandler.execQuery(query); 
+        try {
+            while(rs.next()){
+                String hType = rs.getString("type"); 
+                options.add(hType);
+            }
+        } catch (SQLException e) {
+        }
        type.setItems(options);
     }
 
     @FXML
-    private void DeletMovie(ActionEvent event) {
-            //String mName = name.getText(); 
+    private void DeletMovie(ActionEvent event) { 
         String mID = id.getText();
 
         
