@@ -20,12 +20,14 @@ code.
 * Each   customer   has   a   date   of   birth.
 * Each   customer   must   have   a   credit   card   that   can   be   used   to   pay   for   the Subscription. 
 <img width="767" alt="screen shot 2017-09-03 at 6 03 43 pm" src="https://user-images.githubusercontent.com/16858570/30008259-6aeb4bda-90d2-11e7-8cc5-b8f6163f11de.png">
+
 ## MOVIE:
 * Each   movie   has   a   unique   ID
 * Each   movie   has   a   title,   genre,   actors   and   director's   name,   release   date,   movie
 and   a   type   (HD,   Non-HD   or   TV-Shows)
 * Each   movie   has   a   copy   (1-20).   A   movie   copy   does   not   exist   if   the
 corresponding   movie   does   not   exist 
+
 <img width="769" alt="screen shot 2017-09-03 at 6 05 38 pm" src="https://user-images.githubusercontent.com/16858570/30008291-d7ac3716-90d2-11e7-8f29-bbf5a17f7d9d.png">
 
 ## CHECKOUT :
@@ -45,8 +47,9 @@ Tv-   shows.
 * Each   subscription   package   has   its   own   price.
 
 <img width="767" alt="screen shot 2017-09-03 at 6 06 51 pm" src="https://user-images.githubusercontent.com/16858570/30008297-f10458e2-90d2-11e7-8b53-c589d6301bcf.png">
+
 ## ENTITIES
-The   following   section   outlines   all   the   Entities   that   the   database   tracks   and   lists   its primary   key,   Foreign   keys   if   any,   and   all   it’s   attributes.
+The following   section   outlines   all   the   Entities   that   the   database   tracks   and   lists   its primary   key,   Foreign keys if any, and all it’s attributes.
 ## CUSTOMER
 * Primary   key:     Customer_ID
 * Foreign   key:    Subscription_id   references   SUBSCRIPTION   record.
